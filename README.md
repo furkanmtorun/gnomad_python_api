@@ -1,4 +1,4 @@
-# gnomAD Python API (Batch Script)
+# 🧬 gnomAD Python API (Batch Script)
 
 ## :hash: What is *gnomAD* and the purpose of this script?
 [gnomAD (The Genome Aggregation Database)](http://gnomad.broadinstitute.org/) is aggregation of thousands of exomes and genomes human sequencing studies. Also, gnomAD consortium annotates the variants with allelic frequency in genomes and exomes.
@@ -25,14 +25,16 @@
 
 ### Example Usages
 - **How to list the variants by gene name or gene id?**
+
 `python gnomad_python_api.py -filter_by="gene_name" -search_by="TP53" -dataset="gnomad_r2_1"`
 
 > Here,  "**gene_id**" can also be used instead of "**gene_name**" after stating an **Ensembl Gene ID** instead of a gene name.
 
-- **How to list the variants by transcripts?**
+- **How to list the variants by transcript ID?**
+
 `python gnomad_python_api.py -filter_by="transcript_id" -search_by="ENST00000544455" -dataset="gnomad_r3"`
 
-- **How to list the variants by using a file containing genes/transcripts?**
+- **How to list the variants using a file containing genes/transcripts?**
 
   - Prepare your file that contains gene name, Ensembl gene IDs or Ensembl transcript IDs line-by-line. 
 	> ENSG00000169174 <br> ENSG00000171862  <br> ENSG00000170445
