@@ -6,10 +6,12 @@
 
 ## :hash: Requirements and Installation
  - Create a directory and download the "**gnomad_python_api.py**" and "**requirements.txt**" files or clone the repository via Git using following command:
- `git clone https://github.com/furkanmtorun/gnomad_python_api.git`
+ 
+ 	`git clone https://github.com/furkanmtorun/gnomad_python_api.git`
 
  - Install the required packages if you do not already:
-` pip3 install -r requirements.txt `
+ 
+	` pip3 install -r requirements.txt `
 
 - It's ready to use now! 
 
