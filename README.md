@@ -25,7 +25,7 @@
 | -dataset | *It defines the dataset* | exac, gnomad_r2_1, gnomad_r3, gnomad_r2_1_controls, gnomad_r2_1_non_neuro, gnomad_r2_1_non_cancer, gnomad_r2_1_non_topmed
 | -h | It displays the parameters | *To get help via script:* `python gnomad_python_api.py -h`
 
-### Example Usages
+## :hash: Example Usages
 - **How to list the variants by gene name or gene id?**
 
 `python gnomad_python_api.py -filter_by="gene_name" -search_by="TP53" -dataset="gnomad_r2_1"`
@@ -53,7 +53,7 @@
 ## :hash: Contributing & Feedback
 I would be very happy to see any feedbacks and contributions on the script.
 
-**Furkan Torun |  [furkanmtorun@gmail.com](mailto:furkanmtorun@gmail.com) | Web site: [furkanmtorun.github.io](https://furkanmtorun.github.io/)**
+**Furkan Torun |  [furkanmtorun@gmail.com](mailto:furkanmtorun@gmail.com) | Website: [furkanmtorun.github.io](https://furkanmtorun.github.io/)**
 
 
 
