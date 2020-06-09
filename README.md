@@ -1,5 +1,7 @@
 # 🧬 gnomAD Python API (Batch Script)
 
+![Actions for gnomad_python_api](https://github.com/furkanmtorun/gnomad_python_api/workflows/Actions%20for%20gnomad_python_api/badge.svg)
+
 ## :hash: What is *gnomAD* and the purpose of this script?
 [gnomAD (The Genome Aggregation Database)](http://gnomad.broadinstitute.org/) is aggregation of thousands of exomes and genomes human sequencing studies. Also, gnomAD consortium annotates the variants with allelic frequency in genomes and exomes.
 **Here**, this batch script is able to search the genes or transcripts of your interest and retrieve variant data from the database via [gnomAD backend API](https://gnomad.broadinstitute.org/api) that based on GraphQL query language.
