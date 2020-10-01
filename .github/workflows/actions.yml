@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.5, 3.6, 3.7, 3.8]
+        python-version: [3.6, 3.7, 3.8]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -19,4 +19,4 @@ jobs:
     - name: Test a single transcript
       run: |
         # Test the script by retrieving a transcript data
-        python gnomad_python_api.py -filter_by="gene_name" -search_by="TP53" -dataset="gnomad_r2_1"
+        python gnomad_python_cli.py -filter_by=gene_name -search_by="BRCA1" -dataset="gnomad_r2_1" -sv_dataset="gnomad_sv_r2_1"
