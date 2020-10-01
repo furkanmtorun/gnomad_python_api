@@ -53,7 +53,7 @@ st.markdown("""
 st.info(""" 
         - This API tool uses [gnomAD GraphQL backend service](https://gnomad.broadinstitute.org/api).
         - Upload your .csv/tsv/txt file containing the single type of identifiers as one column.
-        - Each row should correspond to single record (i.e. gene name, gene ID, rsID, transcript ID).
+        - Each row should correspond to single record (i.e. gene name, gene ID, transcript ID or rsID).
         - By using the app, you agree that you accepting [the disclaimer](https://github.com/furkanmtorun/gnomad_python_api#hash-disclaimer).
     """)
 
@@ -920,13 +920,13 @@ if (filter_by is not None) and (search_by is not None) and (st.button('Get Data 
     except AttributeError as ae:
 
         # Error Message from gnomAD 
-        if filter_by != 'rs_id':
-            try:
-                for msg in response.json()["errors"]:
-                    st.error("Errors from gnomAD for your process:\n\t" + msg["message"])
-            except Exception as anyOtherException:
-                pass
-    
+        try:
+            for msg in response.json()["errors"]:
+                st.error("Errors from gnomAD for your process:\n\t" + msg["message"])
+        except Exception as anyOtherException:
+            pass
+
+        if filter_by != "rs_id":
             # General Error Message
             st.warning("""
                 It might be caused since the search did not find a result from the database. 
@@ -939,8 +939,6 @@ if (filter_by is not None) and (search_by is not None) and (st.button('Get Data 
                 > 
                 > If you think this should not occur, you can contact with developer to issue this problem on Github page.
                 """.format(ae))
-        else:
-            pass
 
     except (TypeError, KeyError):
         try:
