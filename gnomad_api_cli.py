@@ -723,11 +723,33 @@ def get_variants_by(filter_by, search_term, dataset, timeout=None):
             sys.exit("An unknown error occured regarding the internet connection!")
         
         except AttributeError as ae:
-            pass
+            # Error Message from gnomAD 
+            try:
+                for msg in response.json()["errors"]:
+                    sys.exit("Errors from gnomAD for your process:\n\t" + msg["message"])
+            except Exception as anyOtherException:
+                pass
+
+            if filter_by != "rs_id":
+                # General Error Message
+                print("""
+                    It might be caused since the search did not find a result from the database. 
+                    Try to check the `input` for `{}` or other `options`.
+                    """.format(filter_by))
+                
+                # Technical Error Message 
+                print("""
+                    > As a note, technical reason is `{}`. 
+                    > 
+                    > If you think this should not occur, you can contact with developer to issue this problem on Github page.
+                    """.format(ae))
 
         except (TypeError, KeyError):
-            for msg in response.json()["errors"]:
-                sys.exit("Errors from gnomAD for your process:\n\t" + msg["message"])
+            try:
+                for msg in response.json()["errors"]:
+                    print("Errors from gnomAD for your process:\n\t" + msg["message"])
+            except Exception as anyOtherException:
+                pass
 
         else:
             print(" ! DONE: Check out the 'outputs/' folder")
