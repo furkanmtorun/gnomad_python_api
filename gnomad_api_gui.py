@@ -370,22 +370,6 @@ def get_variants_by(filter_by, search_term, dataset, mode, timeout=None):
                 n_larger
             }
             }
-            siteQualityMetrics {
-            BaseQRankSum
-            ClippingRankSum
-            DP
-            FS
-            InbreedingCoeff
-            MQ
-            MQRankSum
-            pab_max
-            QD
-            ReadPosRankSum
-            RF
-            SiteQuality
-            SOR
-            VQSLOD
-            }
         }
         }
         genome {
@@ -455,22 +439,6 @@ def get_variants_by(filter_by, search_term, dataset, mode, timeout=None):
                 n_smaller
                 n_larger
             }
-            }
-            siteQualityMetrics {
-            BaseQRankSum
-            ClippingRankSum
-            DP
-            FS
-            InbreedingCoeff
-            MQ
-            MQRankSum
-            pab_max
-            QD
-            ReadPosRankSum
-            RF
-            SiteQuality
-            SOR
-            VQSLOD
             }
         }
         }
