@@ -44,19 +44,24 @@ In the GUI version of gnomAD Python API, [Streamlit](https://www.streamlit.io/) 
 >
 > **So, it is recommended to use GUI version.**
 
-Here are the screenshots for the GUI version:
+- To use GUI version of gnomAD Python API:
 
-![gnomAD Python API GUI](img/main_screen.png)
+  `streamlit run gnomad_api_gui.py`
 
-_gnomAD Python API GUI - Main Screen_
 
-![gnomAD Python API GUI](img/results.png)
+- Here are the screenshots for the GUI version:
 
-_gnomAD Python API GUI - Outputs_
+  ![gnomAD Python API GUI](img/main_screen.png)
 
-![gnomAD Python API GUI](img/results_2.png)
+  _gnomAD Python API GUI - Main Screen_
 
-_gnomAD Python API GUI - Outputs and Plots_
+  ![gnomAD Python API GUI](img/results.png)
+
+  _gnomAD Python API GUI - Outputs_
+
+  ![gnomAD Python API GUI](img/results_2.png)
+
+  _gnomAD Python API GUI - Outputs and Plots_
 
 > The outputs are also saved into `outputs/` folder in the GUI version. 
 
