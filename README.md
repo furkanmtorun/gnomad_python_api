@@ -66,12 +66,12 @@ In the GUI version of gnomAD Python API, [Streamlit](https://www.streamlit.io/) 
 > The outputs are also saved into `outputs/` folder in the GUI version. 
 
 ## :hash: CLI | Usage & Options
-| Options in the script | Description | Parameters |
+| Options | Description | Parameters |
 |--|--|--|
 | -filter_by | *It defines the input type.* |`gene_name`, `gene_id`, `transcript_id`, or  `rs_id` |
 | -search_by | *It defines the input.* | Type a gene/transcript identifier <br> *e.g.: TP53, ENSG00000169174, ENST00000544455* <br> Type the name of file containig your inputs <br> *e.g: myGenes.txt*
 | -dataset | *It defines the dataset.* | `exac`, `gnomad_r2_1`, `gnomad_r3`, `gnomad_r2_1_controls`, `gnomad_r2_1_non_neuro`, `gnomad_r2_1_non_cancer`, or `gnomad_r2_1_non_topmed`
-| -sv_dataset | *It defines structural variants dataset* | `gnomad_sv_r2_1`, `gnomad_sv_r2_1_controls`, or `gnomad_sv_r2_1_non_neuro`
+| -sv_dataset | *It defines structural variants dataset.* | `gnomad_sv_r2_1`, `gnomad_sv_r2_1_controls`, or `gnomad_sv_r2_1_non_neuro`
 | -h | *It displays the parameters.* | *To get help via script:* `python gnomad_api_cli.py -h`
 
 
