@@ -21,7 +21,7 @@
 **Here**, this API with both CLI and GUI versions is able to search the genes or transcripts of your interest and retrieve variant data from the database via [gnomAD backend API](https://gnomad.broadinstitute.org/api) that based on GraphQL query language.
 
 ## :hash: Requirements and Installation
- - Create a directory and download the "**gnomad_python_cli.py**" and "**requirements.txt**" files or clone the repository via Git using following command:
+ - Create a directory and download the "**gnomad_api_cli.py**" and "**requirements.txt**" files or clone the repository via Git using following command:
  
  	`git clone https://github.com/furkanmtorun/gnomad_python_api.git`
 
@@ -67,7 +67,7 @@ _gnomAD Python API GUI - Outputs and Plots_
 | -search_by | *It defines the input.* | Type a gene/transcript identifier <br> *e.g.: TP53, ENSG00000169174, ENST00000544455* <br> Type the name of file containig your inputs <br> *e.g: myGenes.txt*
 | -dataset | *It defines the dataset.* | `exac`, `gnomad_r2_1`, `gnomad_r3`, `gnomad_r2_1_controls`, `gnomad_r2_1_non_neuro`, `gnomad_r2_1_non_cancer`, or `gnomad_r2_1_non_topmed`
 | -sv_dataset | *It defines structural variants dataset* | `gnomad_sv_r2_1`, `gnomad_sv_r2_1_controls`, or `gnomad_sv_r2_1_non_neuro`
-| -h | *It displays the parameters.* | *To get help via script:* `python gnomad_python_cli.py -h`
+| -h | *It displays the parameters.* | *To get help via script:* `python gnomad_api_cli.py -h`
 
 
 > ❗ Here, for getting variants, `gnomad_r2_1` and `gnomad_sv_r2_1` are defined as default values for these two `-dataset` and `-sv_dataset` options, respectively.
@@ -78,19 +78,19 @@ _gnomAD Python API GUI - Outputs and Plots_
 
   *For gene name:*
 
-  `python gnomad_python_cli.py -filter_by=gene_name -search_by="BRCA1" -dataset="gnomad_r2_1" -sv_dataset="gnomad_sv_r2_1"`
+  `python gnomad_api_cli.py -filter_by=gene_name -search_by="BRCA1" -dataset="gnomad_r2_1" -sv_dataset="gnomad_sv_r2_1"`
 
   *For Ensembl gene ID* 
 
-  `python gnomad_python_cli.py -filter_by=gene_id -search_by="ENSG00000169174" -dataset="gnomad_r2_1" -sv_dataset="gnomad_sv_r2_1"`
+  `python gnomad_api_cli.py -filter_by=gene_id -search_by="ENSG00000169174" -dataset="gnomad_r2_1" -sv_dataset="gnomad_sv_r2_1"`
 
 - **How to list the variants by transcript ID?**
 
-  `python gnomad_python_cli.py -filter_by=transcript_id -search_by="ENST00000407236" -dataset="gnomad_r2_1"`
+  `python gnomad_api_cli.py -filter_by=transcript_id -search_by="ENST00000407236" -dataset="gnomad_r2_1"`
 
 - **How to get variant info by RS ID (rsId)?**
   
-  `python gnomad_python_cli.py -filter_by=rs_id -search_by="rs201857604" -dataset="gnomad_r2_1"`
+  `python gnomad_api_cli.py -filter_by=rs_id -search_by="rs201857604" -dataset="gnomad_r2_1"`
 
 - **How to list the variants using a file containing genes/transcripts?**
 
@@ -99,7 +99,7 @@ _gnomAD Python API GUI - Outputs and Plots_
 
   - Then, run the following command:
   
-    `python gnomad_python_cli.py -filter_by="gene_id" -search_by="myFavoriteGenes.txt" -dataset="gnomad_r2_1" -sv_dataset="gnomad_sv_r2_1"`
+    `python gnomad_api_cli.py -filter_by="gene_id" -search_by="myFavoriteGenes.txt" -dataset="gnomad_r2_1" -sv_dataset="gnomad_sv_r2_1"`
 
   > Please, use only one type of identifier in the file.
 
