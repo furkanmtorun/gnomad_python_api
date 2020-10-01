@@ -19,4 +19,4 @@ jobs:
     - name: Test a single transcript
       run: |
         # Test the script by retrieving a transcript data
-        python gnomad_python_cli.py -filter_by=gene_name -search_by="BRCA1" -dataset="gnomad_r2_1" -sv_dataset="gnomad_sv_r2_1"
+        python gnomad_api_cli.py -filter_by=gene_name -search_by="BRCA1" -dataset="gnomad_r2_1" -sv_dataset="gnomad_sv_r2_1"
