@@ -870,7 +870,7 @@ def generate_plot(search_by, filter_by, mode):
                 st.warning("Plots were not generated since `structural_variants.tsv` could be created. It may happens if the data is not available for your dataset")
 
     except Exception as plotError:
-        st.text(plotError)
+        # st.text(plotError)
         pass
 
 # Action
