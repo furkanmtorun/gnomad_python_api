@@ -920,25 +920,31 @@ if (filter_by is not None) and (search_by is not None) and (st.button('Get Data 
     except AttributeError as ae:
 
         # Error Message from gnomAD 
-        for msg in response.json()["errors"]:
-            st.error("Error message from gnomAD for your process:\n\t" + msg["message"])
+        if filter_by != 'rs_id':
+            try:
+                for msg in response.json()["errors"]:
+                    st.error("Errors from gnomAD for your process:\n\t" + msg["message"])
+            except Exception as anyOtherException:
+                pass
     
-        # General Error Message
-        st.warning("""
-            It might be caused since the search did not find a result from the database. 
-            Try to check the `input` for `{}` or other `options`.
-            """.format(filter_by))
-        
-        # Technical Error Message 
-        st.markdown("""
-            > As a note, technical reason is `{}`. 
-            > 
-            > If you think this should not occur, you can contact with developer to issue this problem on Github page.
-            """.format(ae))
+            # General Error Message
+            st.warning("""
+                It might be caused since the search did not find a result from the database. 
+                Try to check the `input` for `{}` or other `options`.
+                """.format(filter_by))
+            
+            # Technical Error Message 
+            st.markdown("""
+                > As a note, technical reason is `{}`. 
+                > 
+                > If you think this should not occur, you can contact with developer to issue this problem on Github page.
+                """.format(ae))
+        else:
+            pass
 
     except (TypeError, KeyError):
         try:
             for msg in response.json()["errors"]:
                 st.error("Errors from gnomAD for your process:\n\t" + msg["message"])
-        except:
+        except Exception as anyOtherException:
             pass
