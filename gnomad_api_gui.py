@@ -89,6 +89,13 @@ filter_by = st.selectbox("Select a proper input type", ["gene_name", "gene_id", 
 st.subheader("Choose the source for dataset")
 dataset = st.selectbox("Select a proper gnomAD data set:", ["gnomad_r2_1", "gnomad_r3", "gnomad_r2_1_controls", "gnomad_r2_1_non_neuro", "gnomad_r2_1_non_cancer", "gnomad_r2_1_non_topmed", "exac"])
 
+# Reference Genome
+st.subheader("Choose the reference genome")
+reference_genome = st.selectbox("Select a proper reference genome build:", ["GRCh37", "GRCh38"])
+
+if reference_genome == "GRCh38":
+    st.warning("gnomAD structural variant (SV) data might not available on reference genome `GRCh38`.")
+
 # SV Dataset
 if filter_by in ["gene_id", "gene_name"]:
     st.subheader("Choose the source for structural variant (SV) dataset")
@@ -99,7 +106,7 @@ def get_variants_by(filter_by, search_term, dataset, mode, timeout=None):
 
     query_for_transcripts = """
     {
-        transcript(transcript_id: "%s") {
+        transcript(transcript_id: "%s", reference_genome: %s) {
             transcript_id,
             transcript_version,        
             gene {
@@ -468,7 +475,7 @@ def get_variants_by(filter_by, search_term, dataset, mode, timeout=None):
 
     query_for_genes = """
     {
-        gene(%s: "%s") {
+        gene(%s: "%s", reference_genome: %s) {
                 gene_id
             symbol
             start
@@ -650,16 +657,16 @@ def get_variants_by(filter_by, search_term, dataset, mode, timeout=None):
     """
 
     if filter_by == "transcript_id":
-        query = query_for_transcripts % (search_term.upper(), dataset, dataset)
+        query = query_for_transcripts % (search_term.upper(), reference_genome, dataset, dataset)
 
     elif filter_by == "rs_id":
         query = query_for_variants % ("rsid", search_term.lower(), dataset)
 
     elif filter_by == "gene_id":
-        query = query_for_genes % ("gene_id", search_term.upper(), sv_dataset, dataset, dataset)
+        query = query_for_genes % ("gene_id", search_term.upper(), reference_genome, sv_dataset, dataset, dataset)
     
     elif filter_by == "gene_name":
-        query = query_for_genes % ("gene_name", search_term.upper(), sv_dataset, dataset, dataset)
+        query = query_for_genes % ("gene_name", search_term.upper(), reference_genome, sv_dataset, dataset, dataset)
 
     else:
         print("Unknown `filter_by` type!")
@@ -851,7 +858,7 @@ def generate_plot(search_by, filter_by, mode):
                 fig4.write_html("./outputs/" + search_by + "/clinvar_variants_by_clinical_significance.html")
                 fig5.write_html("./outputs/" + search_by + "/clinvar_variants_by_major_consequence.html")
             else:
-                st.warning("Plots were not generated since `variants.tsv` could be created. It may happens if the data is not available for your dataset")
+                st.warning("Plots were not generated since `variants.tsv` could not be created. It may happens if the data is not available for your dataset")
 
         if filter_by in ["gene_name", "gene_id"]:
             structural_variants_file = "./outputs/" + search_by + "/structural_variants.tsv"
@@ -867,7 +874,7 @@ def generate_plot(search_by, filter_by, mode):
                 # Export as HTML
                 fig6.write_html("./outputs/" + search_by + "/structural_variants_by_consequence.html")
             else:
-                st.warning("Plots were not generated since `structural_variants.tsv` could be created. It may happens if the data is not available for your dataset")
+                st.warning("Plots were not generated since `structural_variants.tsv` could not be created. It may happens if the data is not available for your dataset")
 
     except Exception as plotError:
         # st.text(plotError)
