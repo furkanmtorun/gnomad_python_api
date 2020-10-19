@@ -72,11 +72,14 @@ In the GUI version of gnomAD Python API, [Streamlit](https://www.streamlit.io/) 
 | -search_by | *It defines the input.* | Type a gene/transcript identifier <br> *e.g.: TP53, ENSG00000169174, ENST00000544455* <br> Type the name of file containig your inputs <br> *e.g: myGenes.txt*
 | -dataset | *It defines the dataset.* | `exac`, `gnomad_r2_1`, `gnomad_r3`, `gnomad_r2_1_controls`, `gnomad_r2_1_non_neuro`, `gnomad_r2_1_non_cancer`, or `gnomad_r2_1_non_topmed`
 | -sv_dataset | *It defines structural variants dataset.* | `gnomad_sv_r2_1`, `gnomad_sv_r2_1_controls`, or `gnomad_sv_r2_1_non_neuro`
+| -reference_genome | *It defines reference genome build.* | `GRCh37` or `GRCh38`
 | -h | *It displays the parameters.* | *To get help via script:* `python gnomad_api_cli.py -h`
 
 
 > ❗ Here, for getting variants, `gnomad_r2_1` and `gnomad_sv_r2_1` are defined as default values for these two `-dataset` and `-sv_dataset` options, respectively.
-> 
+>
+>
+> ❗ Also, you need to choose `GRCh38` for retrieving variants from the `gnomad_r3` dataset. However, in the `GRCh38` build, structural variants are not available. 
 
 ## :hash: CLI | Example Usages
 - **How to list the variants by gene name or gene id?**
@@ -84,6 +87,10 @@ In the GUI version of gnomAD Python API, [Streamlit](https://www.streamlit.io/) 
   *For gene name:*
 
   `python gnomad_api_cli.py -filter_by=gene_name -search_by="BRCA1" -dataset="gnomad_r2_1" -sv_dataset="gnomad_sv_r2_1"`
+
+  If you get data from `gnomad_r3`:
+
+  `python gnomad_api_cli.py -filter_by=gene_name -search_by="BRCA1" -dataset="gnomad_r3" -reference_genome="GRCh38"`
 
   *For Ensembl gene ID* 
 

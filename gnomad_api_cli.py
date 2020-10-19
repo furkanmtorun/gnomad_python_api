@@ -31,8 +31,8 @@ def arg_parser():
     parser.add_argument("-filter_by", type=str, required=True, default="gene_name", help="Get your variants according to: `gene_name`, `gene_id, `transcript_id` or `rs_id`.")
     parser.add_argument("-search_by", type=str, required=True, default="TP53", help="Type your input for searching or type the file name (e.g: myGenes.txt) containing your inputs")
     parser.add_argument("-dataset", type=str, required=True, default="gnomad_r2_1", help="Select your dataset: exac, gnomad_r2_1, gnomad_r3, gnomad_r2_1_controls, gnomad_r2_1_non_neuro, gnomad_r2_1_non_cancer, gnomad_r2_1_non_topmed")
+    parser.add_argument("-reference_genome", type=str, required=False, default="GRCh37", help="Select a proper reference genome build : `GRCh37` or `GRCh38`")
     parser.add_argument("-sv_dataset", type=str, required=False, default="gnomad_sv_r2_1", help="Select your structural variants dataset : `gnomad_sv_r2_1`, `gnomad_sv_r2_1_controls` or `gnomad_sv_r2_1_non_neuro`")
-    # parser.add_argument("-get", nargs="+", default=["gnomad", "clinvar"], help="List your requests comma seperated: `gnomad`, `clinvar`, `gtex_tissue_expression`, `genome_coverage`, `exome_coverage`, `gnomad_constraint`, or `exac_constraint`")
     args = parser.parse_args()
     
     # Control the given arguments 
@@ -44,24 +44,31 @@ def arg_parser():
     
     if args.filter_by not in ["gene_name", "gene_id", "transcript_id", "rs_id"]:
         sys.exit("! Select a proper filter type :\n\t `gene_name`, `gene_id, `transcript_id` or `rs_id`")
+   
+    if args.reference_genome not in ["GRCh37", "GRCh38"]:
+        sys.exit("! Select a proper reference genome build :\n\t `GRCh37` or `GRCh38`")
+
+    if (args.dataset == "gnomad_r3") and (args.reference_genome == "GRCh37"):
+        sys.exit("! You need to select `GRCh38` reference genome build for getting data from `gnomad_r3`.")
 
     # Define variables
     filter_by = args.filter_by
     search_by = args.search_by
     dataset = args.dataset
     sv_dataset = args.sv_dataset
+    reference_genome = args.reference_genome
 
-    return filter_by, search_by, dataset, sv_dataset
+    return filter_by, search_by, dataset, sv_dataset, reference_genome
 
 # gnomAD API
 end_point = "https://gnomad.broadinstitute.org/api/"
 
 # Main Function
-def get_variants_by(filter_by, search_term, dataset, timeout=None):
+def get_variants_by(filter_by, search_term, dataset, reference_genome, sv_dataset, timeout=None):
     
     query_for_transcripts = """
     {
-        transcript(transcript_id: "%s") {
+        transcript(transcript_id: "%s", reference_genome: %s) {
             transcript_id,
             transcript_version,        
             gene {
@@ -430,7 +437,7 @@ def get_variants_by(filter_by, search_term, dataset, timeout=None):
 
     query_for_genes = """
     {
-        gene(%s: "%s") {
+        gene(%s: "%s", reference_genome: %s) {
                 gene_id
             symbol
             start
@@ -612,16 +619,16 @@ def get_variants_by(filter_by, search_term, dataset, timeout=None):
     """
 
     if filter_by == "transcript_id":
-        query = query_for_transcripts % (search_term.upper(), dataset, dataset)
+        query = query_for_transcripts % (search_term.upper(), reference_genome, dataset, dataset)
 
     elif filter_by == "rs_id":
         query = query_for_variants % ("rsid", search_term.lower(), dataset)
 
     elif filter_by == "gene_id":
-        query = query_for_genes % ("gene_id", search_term.upper(), sv_dataset, dataset, dataset)
+        query = query_for_genes % ("gene_id", search_term.upper(), reference_genome, sv_dataset, dataset, dataset)
     
     elif filter_by == "gene_name":
-        query = query_for_genes % ("gene_name", search_term.upper(), sv_dataset, dataset, dataset)
+        query = query_for_genes % ("gene_name", search_term.upper(), reference_genome, sv_dataset, dataset, dataset)
 
     else:
         print("Unknown `filter_by` type!")
@@ -759,18 +766,18 @@ def get_variants_by(filter_by, search_term, dataset, timeout=None):
 
 # Action
 if __name__ == "__main__":
-    filter_by, search_by, dataset, sv_dataset = arg_parser()
+    filter_by, search_by, dataset, sv_dataset, reference_genome = arg_parser()
     if "." in search_by:
         try:
             with open(search_by, "r") as f:
                 search_list = [line.rstrip() for line in f]
                 for search_item in tqdm(search_list):
-                    get_variants_by(filter_by, search_item, dataset)
+                    get_variants_by(filter_by, search_item, dataset, reference_genome, sv_dataset)
         except:
             print("A problem occured while reading the file namely `{}` or the filter type `{}` is wrong!"\
                   .format(search_by, filter_by))
         finally:
             f.close()
     elif "." not in search_by:
-        get_variants_by(filter_by, search_by, dataset)
+        get_variants_by(filter_by, search_by, dataset, reference_genome, sv_dataset)
         
