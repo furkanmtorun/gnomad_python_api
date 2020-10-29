@@ -14,9 +14,10 @@
   - [:hash: Contributing & Feedback](#hash-contributing--feedback)
   - [:hash: Citation](#hash-citation)
   - [:hash: Developer](#hash-developer)
+  - [:hash: References](#hash-references)
 
 ## :hash: What is *gnomAD* and the purpose of this script?
-[gnomAD (The Genome Aggregation Database)](http://gnomad.broadinstitute.org/) is aggregation of thousands of exomes and genomes human sequencing studies. Also, gnomAD consortium annotates the variants with allelic frequency in genomes and exomes.
+[gnomAD (The Genome Aggregation Database)](http://gnomad.broadinstitute.org/) [[1]](#hash-references) is aggregation of thousands of exomes and genomes human sequencing studies. Also, gnomAD consortium annotates the variants with allelic frequency in genomes and exomes.
 
 **Here**, this API with both CLI and GUI versions is able to search the genes or transcripts of your interest and retrieve variant data from the database via [gnomAD backend API](https://gnomad.broadinstitute.org/api) that based on GraphQL query language.
 
@@ -137,5 +138,8 @@ Upcoming !
 ## :hash: Developer
 **Furkan M. Torun ([@furkanmtorun](http://github.com/furkanmtorun)) |  [furkanmtorun@gmail.com](mailto:furkanmtorun@gmail.com) |
 Academia: [Google Scholar Profile](https://scholar.google.com/citations?user=d5ZyOZ4AAAAJ)**
+
+## :hash: References
+1. Karczewski, K.J., Francioli, L.C., Tiao, G. et al. The mutational constraint spectrum quantified from variation in 141,456 humans. Nature 581, 434–443 (2020). https://doi.org/10.1038/s41586-020-2308-7
 
 
