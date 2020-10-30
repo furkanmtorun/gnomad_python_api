@@ -12,7 +12,6 @@
   - [:hash: CLI | Example Usages](#hash-cli--example-usages)
   - [:hash: Disclaimer](#hash-disclaimer)
   - [:hash: Contributing & Feedback](#hash-contributing--feedback)
-  - [:hash: Citation](#hash-citation)
   - [:hash: Developer](#hash-developer)
   - [:hash: References](#hash-references)
 
@@ -20,6 +19,12 @@
 [gnomAD (The Genome Aggregation Database)](http://gnomad.broadinstitute.org/) [[1]](#hash-references) is aggregation of thousands of exomes and genomes human sequencing studies. Also, gnomAD consortium annotates the variants with allelic frequency in genomes and exomes.
 
 **Here**, this API with both CLI and GUI versions is able to search the genes or transcripts of your interest and retrieve variant data from the database via [gnomAD backend API](https://gnomad.broadinstitute.org/api) that based on GraphQL query language.
+
+---
+
+**⭐ If you like it, please do not forget give a star!**
+
+---
 
 ## :hash: Requirements and Installation
  - Create a directory and download the "**gnomad_api_cli.py**" and "**requirements.txt**" files or clone the repository via Git using following command:
@@ -132,8 +137,7 @@ I would be very happy to see any feedback or contributions to the project.
 
 For problems and enhancement requests, please `open an issue` above. 
 
-## :hash: Citation
-Upcoming !
+⭐ If you like it, please do not forget give a star!
 
 ## :hash: Developer
 **Furkan M. Torun ([@furkanmtorun](http://github.com/furkanmtorun)) |  [furkanmtorun@gmail.com](mailto:furkanmtorun@gmail.com) |

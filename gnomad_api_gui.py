@@ -30,25 +30,21 @@ main_external_css = """
     </style>
 """
 version = "v1.0"
-citation = "TORUN FM., (2020) gnomAD Python API. "
 
 st.markdown(main_external_css, unsafe_allow_html=True)
 st.title("🧬 gnomAD Python API {}".format(version))
 
 st.markdown("""
         
-        > #### 📰 Developer and Citation
         > - gnomAD Python API {} by **Furkan M. Torun**
         > - E-Mail:               [furkanmtorun@gmail.com](mailto:furkanmtorun@gmail.com) 
         > - GitHub:               https://github.com/furkanmtorun  
         > - Google Scholar:       https://scholar.google.com/citations?user=d5ZyOZ4AAAAJ
         > - Personal Website :    https://furkanmtorun.github.io/
-        > - Cite as follows:
-        >
-        >    `{}`
+        > - ⭐ If you like it, please do not forget give a star on [GitHub](https://github.com/furkanmtorun/gnomad_python_api)! 
         
         ---
-    """.format(version, citation))
+    """.format(version))
 
 st.info(""" 
         - This API tool uses [gnomAD GraphQL backend service](https://gnomad.broadinstitute.org/api).
