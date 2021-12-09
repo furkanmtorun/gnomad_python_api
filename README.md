@@ -6,7 +6,7 @@
 
 - [🧬 gnomAD Python API](#-gnomad-python-api)
   - [:hash: What is *gnomAD* and the purpose of this script?](#hash-what-is-gnomad-and-the-purpose-of-this-script)
-  - [:hash: Update on the repository and gnomadR tool](#-hash--update-on-the-repository-and--gnomadr--tool)
+  - [:hash: Update on the repository and gnomadR tool](#hash-update-on-the-repository-and-gnomadr-tool)
   - [:hash: Requirements and Installation](#hash-requirements-and-installation)
   - [:hash: GUI | Usage](#hash-gui--usage)
   - [:hash: CLI | Usage & Options](#hash-cli--usage--options)
