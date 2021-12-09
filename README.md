@@ -6,6 +6,7 @@
 
 - [🧬 gnomAD Python API](#-gnomad-python-api)
   - [:hash: What is *gnomAD* and the purpose of this script?](#hash-what-is-gnomad-and-the-purpose-of-this-script)
+  - [:hash: Update on the repository and gnomadR tool](#-hash--update-on-the-repository-and--gnomadr--tool)
   - [:hash: Requirements and Installation](#hash-requirements-and-installation)
   - [:hash: GUI | Usage](#hash-gui--usage)
   - [:hash: CLI | Usage & Options](#hash-cli--usage--options)
@@ -20,9 +21,21 @@
 
 **Here**, this API with both CLI and GUI versions is able to search the genes or transcripts of your interest and retrieve variant data from the database via [gnomAD backend API](https://gnomad.broadinstitute.org/api) that based on GraphQL query language.
 
----
+<br> 
 
-**⭐ If you like it, please do not forget give a star!**
+## :hash: Update on the repository and `gnomadR` tool
+
+After the last update on the repository, [gnomAD GraphQL API](https://gnomad.broadinstitute.org/api) has been updated, and the query syntax and most of the keywords were deprecated or altered. Hence, the batch script is currently not able to retrieve the data from the gnomAD API and not able to generate outputs and plots.
+
+**If you are still looking forward a tool that automates fetching the data from gnomAD and you like R lang, you might check `gnomadR`!**
+
+gnomadR: Query gnomAD API from R <img src="https://raw.githubusercontent.com/daynefiler/gnomadR/master/man/figures/gnomadR.png" width="150" align="right" /> by [Dayne Filer (@daynefiler)](https://github.com/daynefiler)
+
+https://github.com/daynefiler/gnomadR
+
+`gnomadR` package intends to provide an interface between R and the [gnomAD](https://gnomad.broadinstitute.org/) API, powered by [GraphQL](https://graphql.org). This package utilizes the [qhql](https://docs.ropensci.org/ghql/) R package to send queries to gnomAD. 
+
+<br>
 
 ---
 
